@@ -73,11 +73,12 @@ export default function SignupScreen() {
 
   // ── Google Auth ────────────────────────────────────────────────────────────
   const [request, response, promptAsync] = Google.useAuthRequest({
-    // TODO: get these from Firebase Console → Project Settings → Your apps → Google Sign-In
-    iosClientId:     'YOUR_IOS_CLIENT_ID.apps.googleusercontent.com',
-    androidClientId: 'YOUR_ANDROID_CLIENT_ID.apps.googleusercontent.com',
-    webClientId:     'YOUR_WEB_CLIENT_ID.apps.googleusercontent.com',
-  });
+      // TODO: replace with your client IDs from Firebase Console
+      // Project Settings → Your apps → Google Sign-In
+      iosClientId:     process.env.EXPO_PUBLIC_IOS_CLIENT_ID,
+      androidClientId: process.env.EXPO_PUBLIC_ANDROID_CLIENT_ID,
+      webClientId:     process.env.EXPO_PUBLIC_WEB_CLIENT_ID,
+    });
 
   useEffect(() => {
     if (response?.type === 'success') {
